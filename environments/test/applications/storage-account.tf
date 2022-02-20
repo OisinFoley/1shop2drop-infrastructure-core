@@ -1,0 +1,1 @@
+../../dev/applications/storage-account.tf

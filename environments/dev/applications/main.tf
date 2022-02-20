@@ -1,10 +1,10 @@
 terraform {
-  required_version = ">= 0.14"
+  required_version = ">= 1.0.0"
 
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "= 2.54.0" # https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md
+      version = "= 2.54.0"
     }
   }
 
@@ -13,6 +13,8 @@ terraform {
        resource_group_name & storage_account_name are specified in remote-backend/main.tf's
        terraform_state block.
     */
+    resource_group_name  = var.resource_group_name
+    storage_account_name = var.storage_account_name
     container_name       = "terraform-state"
     key                  = "applications/terraform.tfstate"
   }
