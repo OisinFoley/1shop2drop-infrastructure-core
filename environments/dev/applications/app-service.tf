@@ -1,5 +1,5 @@
 module "app_service" {
-  source = "github.com/oisinfoley/1shop2drop-infrastructure-modules.git?ref=0.1.1//app-service"
+  source = "github.com/oisinfoley/1shop2drop-infrastructure-modules.git?ref=0.2.0//app-service"
 
   resource_group_name                 = data.azurerm_resource_group.core_infrastructure.name
   resource_group_region               = data.azurerm_resource_group.core_infrastructure.location
@@ -10,6 +10,9 @@ module "app_service" {
   always_on                           = var.always_on
   use_32_bit_process                  = var.use_32_bit_process
   server_container_name               = var.server_container_name
+  environment                         = var.environment
   container_registry_name             = module.container_registry.container_registry_name
   container_registry_password         = module.container_registry.container_registry_password
+  app_insights_instrumentation_key    = module.app_insights.app_insights_instrumentation_key
+  app_insights_connection_string      = module.app_insights.app_insights_connection_string
 }
